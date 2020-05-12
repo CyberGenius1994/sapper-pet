@@ -15,6 +15,7 @@
     "compression": "^1.7.1",
     "polka": "next",
     "rollup-plugin-uglify": "^6.0.4",
+    "sapper-page-loading-bar": "^1.0.0",
     "sirv": "^0.4.0"
   },
   "devDependencies": {

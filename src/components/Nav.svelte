@@ -1,6 +1,20 @@
 <script>
 	export let segment;
 </script>
+<nav>
+
+    <ul>
+        <li class="navigationItem halfItem">
+            <a data-cursor="GO" class="navigationItemLink" href='#cases'>CASES</a>
+        </li>
+        <li class="navigationItem">
+            <a data-cursor="GO" class="navigationItemLink" class:active={segment === "studio"}  rel=prefetch aria-current='studio' href='/studio'>STUDIO</a>
+        </li>
+        <li class="navigationItem">
+            <a data-cursor="GO" class="navigationItemLink" class:active={segment === "contacts"}  rel=prefetch aria-current='contacts' href='/contacts'>CONTACTS</a>
+        </li>
+    </ul>
+</nav>
 
 <style>
 	nav {
@@ -25,25 +39,35 @@
     li.navigationItem.halfItem {
         flex-basis: calc((100% - 20px)/2);
     }
-
-	a {
-		text-decoration: none;
-		padding: 0;
-		display: block;
-        color: var(--main-color);
+	.navigationItemLink {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        font-size: var(--main-font-size);
+        font-family: 'HelveticaNeueCyr', sans-serif;
+        font-weight: 400;
+        text-decoration: none;
+        overflow: hidden;
+        text-transform: uppercase;
+        color: var(--navigation-color);
+        transition: color 300ms 300ms ease-in-out;
+        padding-bottom: 1px;
+    }
+    .navigationItemLink::before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: calc(100% - 1px);
+        left: 0;
+        width: 200%;
+        height: 1px;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, transparent 0%, transparent 50% var(--navigation-color) 50%, var(--navigation-color) 100%);
+        transition: left 500ms ease-in-out;
+    }
+    .navigationItemLink:hover::before {
+        left: 100%;
 	}
 </style>
 
-<nav>
-	<ul>
-		<li class="navigationItem halfItem">
-			<a href='#cases'>CASES</a>
-		</li>
-		<li class="navigationItem">
-			<a rel=prefetch aria-current='{segment === "studio" ? "page" : undefined}' href='studio'>STUDIO</a>
-		</li>
-		<li class="navigationItem">
-			<a rel=prefetch aria-current='{segment === "contacts" ? "page" : undefined}' href='contacts'>CONTACTS</a>
-		</li>
-	</ul>
-</nav>
+

@@ -1,14 +1,13 @@
 <script>
 	import Nav from './Nav.svelte'
 	import Icons from './Icons.svelte'
-	let logo = '../img/logo.svg';
 
 </script>
 <Icons/>
 <header class="appHeader">
 	<div class="brand">
         <a href="/" class="logo">
-            <svg width="237" height="30">
+            <svg viewBox="0 0 237 30">
 	            <use href="#Logo"/>
             </svg>
         </a>
@@ -28,8 +27,20 @@
         align-content: center;
         justify-content: space-between;
         padding: 20px;
+		mix-blend-mode: difference;
+	}
+	.brand {
+        flex-basis: calc((100%/12)*2);
 	}
 	.logo {
-        color: var(--main-color);
+        width: 100%;
+        display: flex;
+        color: var(--navigation-color);
+	}
+	.logo svg {
+		max-width: 237px;
+        width: 100%;
+        height: auto;
+        display: flex;
 	}
 </style>
